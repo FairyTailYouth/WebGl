@@ -1,0 +1,52 @@
+<!--
+ * @Autor: zt
+ * @Description: 
+ * @Date: 2022-09-29 16:25:11
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <script src="../three.js">
+
+        </script>
+    </head>
+
+    <body>
+        <canvas id="canvas"></canvas>
+       
+        <script type="text/javascript">
+  
+          const canvas = document.querySelector('#canvas')
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight 
+            //canvas 2d 画笔
+            // const gl = canvas.getContext('2d')
+            //canvas 3d 画笔
+            const gl = canvas.getContext('webgl')
+            //声明颜色  RGBA
+            gl.clearColor(1,1,0,1)
+            //刷底色
+            gl.clear(gl.COLOR_BUFFER_BIT)
+            //利用threejs中的Color对象
+          const color = new THREE.Color('rgba(33,213,133,133)')
+           //声明颜色  RGBA
+           gl.clearColor(color.r,color.g,color.b,color.a)
+            //刷底色
+            gl.clear(gl.COLOR_BUFFER_BIT)
+            //颜色偏移的动画
+           !(function ani(){
+            //这个函数没见过
+            requestAnimationFrame(ani)
+            color.offsetHSL(0.005,0,0)
+              //声明颜色  RGBA
+              gl.clearColor(color.r,color.g,color.b,color.a)
+            //刷底色
+            gl.clear(gl.COLOR_BUFFER_BIT)
+           })();
+           
+          </script>
+
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!--
+ * @Autor: zt
+ * @Description: 
+ * @Date: 2022-09-29 17:46:35
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../three.js">
+
+    </script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <!-- 定点着色器 -->
+    <script id ='vertexShader' type="x-shader/x-vertex">
+        void main(){
+            gl_Position = vec4(0,0,0,1);
+            gl_PointSize = 100;
+        }
+
+    </script>
+    <!-- 片元着色器 -->
+    <script id="fragementShader" type="x-shader/x-fragment">
+        void main(){
+            gl_FragColor = vec4(1,1,0,1)
+        }
+
+    </script>
+    <script>
+        const canvas = document.querySelector('#canvas')
+        const vsSource = document.getElementById('vertexShader').innerText;
+        const fsSource = document.getElementById('fragementShader').innerText;
+ 
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight 
+        //canvas 2d 画笔
+        // const gl = canvas.getContext('2d')
+        //canvas 3d 画笔
+        const gl = canvas.getContext('webgl')
+       initShaders(gl,vsSource,fsSource);
+        //声明颜色  RGBA
+        gl.clearColor(1,1,0,1)
+        //刷底色
+        gl.clear(gl.COLOR_BUFFER_BIT)  
+      
+    </script>
+</body>
+</html>
